@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 
 @Entity
@@ -29,6 +30,14 @@ public class Course {
 
     @Column(nullable = false)
     private LocalDate endDate;
+
+    @ManyToMany(mappedBy = "courses")
+    @ToString.Exclude
+    private List<Student> students;
+
+    @ManyToOne
+    @JoinColumn(name = "teacher_id", nullable = false)
+    private Teacher teacher;
 
     enum CourseName {
         SPORTS,

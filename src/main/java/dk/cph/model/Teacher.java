@@ -3,6 +3,7 @@ package dk.cph.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
 
 
 @Entity
@@ -24,5 +25,9 @@ public class Teacher {
 
     @Column(name = "zoom", unique = true)
     private String zoom;
+
+    @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ToString.Exclude
+    private List<Course> courses;
 
 }
