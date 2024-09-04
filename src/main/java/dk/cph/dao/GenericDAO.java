@@ -1,6 +1,5 @@
 package dk.cph.dao;
 
-
 import java.util.Set;
 
 public interface GenericDAO<T, D> {
