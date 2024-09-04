@@ -1,5 +1,8 @@
 package dk.cph.config;
 
+import dk.cph.dao.CourseDaoImpl;
+import dk.cph.dao.GenericDAO;
+import dk.cph.dao.StudentDaoImpl;
 import jakarta.persistence.EntityManagerFactory;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -32,7 +35,8 @@ public class HibernateConfig {
     }
     // TODO: IMPORTANT: Add Entity classes here for them to be registered with Hibernate
     private static void getAnnotationConfiguration(Configuration configuration) {
-        //configuration.addAnnotatedClass();
+        configuration.addAnnotatedClass(GenericDAO.class);
+        configuration.addAnnotatedClass(CourseDaoImpl.class);
 
     }
 
