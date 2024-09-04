@@ -17,15 +17,26 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "description", nullable = false)
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private CourseName courseName;
+
+    @Column(length = 500)
     private String description;
 
-    @Column(name = "start_date", nullable = false)
+    @Column(nullable = false)
     private LocalDate startDate;
 
-    @Column(name = "end_date", nullable = false)
+    @Column(nullable = false)
     private LocalDate endDate;
 
+    enum CourseName {
+        SPORTS,
+        MATH,
+        ENGLISH,
+        SCIENCE,
+        ART,
+        MUSIC,
+        History
+    }
 }
-
-
