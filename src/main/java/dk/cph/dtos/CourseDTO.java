@@ -1,4 +1,4 @@
-package dk.cph.dao;
+package dk.cph.dtos;
 
 import dk.cph.model.Student;
 import dk.cph.model.Teacher;
