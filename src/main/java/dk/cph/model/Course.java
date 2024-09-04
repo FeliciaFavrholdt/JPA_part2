@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 
 @Entity
@@ -17,15 +18,34 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "description", nullable = false)
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private CourseName courseName;
+
+    @Column(length = 500)
     private String description;
 
-    @Column(name = "start_date", nullable = false)
+    @Column(nullable = false)
     private LocalDate startDate;
 
-    @Column(name = "end_date", nullable = false)
+    @Column(nullable = false)
     private LocalDate endDate;
 
+    @ManyToMany(mappedBy = "courses")
+    @ToString.Exclude
+    private List<Student> students;
+
+    @ManyToOne
+    @JoinColumn(name = "teacher_id", nullable = false)
+    private Teacher teacher;
+
+    enum CourseName {
+        SPORTS,
+        MATH,
+        ENGLISH,
+        SCIENCE,
+        ART,
+        MUSIC,
+        History
+    }
 }
-
-

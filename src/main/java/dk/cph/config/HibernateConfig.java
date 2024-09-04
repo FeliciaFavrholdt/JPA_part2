@@ -3,18 +3,16 @@ package dk.cph.config;
 import dk.cph.dao.CourseDaoImpl;
 import dk.cph.dao.GenericDAO;
 import dk.cph.dao.StudentDaoImpl;
+import dk.cph.model.Course;
+import dk.cph.model.Student;
+import dk.cph.model.Teacher;
 import jakarta.persistence.EntityManagerFactory;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
-
 import java.util.Properties;
 
-/**
- * Purpose: This class is used to configure Hibernate and create an EntityManagerFactory.
- * Author: Thomas Hartmann
- */
 public class HibernateConfig {
     private static EntityManagerFactory emf;
     private static boolean isIntegrationTest = false; // this flag is set for
@@ -35,9 +33,12 @@ public class HibernateConfig {
     }
     // TODO: IMPORTANT: Add Entity classes here for them to be registered with Hibernate
     private static void getAnnotationConfiguration(Configuration configuration) {
+        //configuration.addAnnotatedClass();
         configuration.addAnnotatedClass(GenericDAO.class);
         configuration.addAnnotatedClass(CourseDaoImpl.class);
-
+        configuration.addAnnotatedClass(Course.class);
+        configuration.addAnnotatedClass(Student.class);
+        configuration.addAnnotatedClass(Teacher.class);
     }
 
     private static EntityManagerFactory createEMF(boolean forTest) {
