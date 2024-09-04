@@ -1,6 +1,6 @@
 package dk.cph.dao;
 
-import java.util.List;
+
 import java.util.Set;
 
 public interface GenericDAO<T, D> {
@@ -10,5 +10,4 @@ public interface GenericDAO<T, D> {
     void removeEntity(D id);
     T findEntity(D id);
     T updateEntity(T entity);
-
 }
